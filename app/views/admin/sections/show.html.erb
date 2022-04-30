@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= @section.name %></h1>
+<p><%= @section.description %></p>
+<p>Section has <%= @section.lessons.count %> lesson(s)</p>
+
+<div>
+  <%= link_to('Edit section', edit_admin_section_path(@section)) %> |
+  <%= link_to('Back to sections', admin_sections_path) %>
+
+  <%= button_to('Destroy section', admin_section_path(@section), method: :delete, class: 'btn btn-danger') %>
+</div>

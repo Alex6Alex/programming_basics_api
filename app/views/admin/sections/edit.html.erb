@@ -1,0 +1,10 @@
+<h1>Editing section</h1>
+
+<%= render('admin/sections/form', section: @section, url: admin_section_path(@section)) %>
+
+<br>
+
+<div>
+  <%= link_to('Show section', admin_section_path(@section)) %> |
+  <%= link_to('Back to sections', admin_sections_path) %>
+</div>

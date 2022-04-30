@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Sections</h1>
+
+<%= link_to('Add new section', new_admin_section_path) %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Order</th>
+    </tr>
+  </thead>
+  <% @sections.each do |section| %>
+    <tr>
+      <th><%= section.id %></th>
+      <td><%= link_to(section.name, admin_section_path(section)) %></td>
+      <td><%= section.description %></td>
+      <td><%= section.order %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Section ID</th>
+      <th>Order</th>
+    </tr>
+  </thead>
+  <% @lessons.each do |lesson| %>
+    <tr>
+      <th><%= lesson.id %></th>
+      <td><%= link_to(lesson.name, admin_lesson_path(lesson)) %></td>
+      <td><%= lesson.description %></td>
+      <td><%= lesson.section_id %></td>
+      <td><%= lesson.order %></td>
+    </tr>
+  <% end %>
+</table>
