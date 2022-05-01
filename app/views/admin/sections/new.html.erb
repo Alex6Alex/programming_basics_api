@@ -1,9 +1,5 @@
-<h1>New section</h1>
+<div class="container-fluid">
+  <h1>Новый раздел</h1>
 
-<%= render('admin/sections/form', section: @section, url: admin_sections_path) %>
-
-<br>
-
-<div>
-  <%= link_to('Back to sections', admin_sections_path) %>
+  <%= render('admin/sections/form', section: @section, url: admin_sections_path) %>
 </div>

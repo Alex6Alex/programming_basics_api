@@ -1,24 +1,28 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Sections</h1>
-
-<%= link_to('Add new section', new_admin_section_path) %>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Order</th>
-    </tr>
-  </thead>
-  <% @sections.each do |section| %>
-    <tr>
-      <th><%= section.id %></th>
-      <td><%= link_to(section.name, admin_section_path(section)) %></td>
-      <td><%= section.description %></td>
-      <td><%= section.order %></td>
-    </tr>
+<div class="container-fluid">
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
   <% end %>
-</table>
+
+  <h1>Разделы</h1>
+
+  <%= button_to('Добавить новый раздел', new_admin_section_path, method: :get, class: 'btn btn-success') %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Позиция</th>
+      </tr>
+    </thead>
+    <% @sections.each do |section| %>
+      <tr>
+        <th><%= section.id %></th>
+        <td><%= link_to(section.name, admin_section_path(section)) %></td>
+        <td><%= section.description %></td>
+        <td><%= section.order %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
