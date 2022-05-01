@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <h1>Редактирование урока</h1>
+
+  <%= render('admin/lessons/form', lesson: @lesson, url: admin_lesson_path(@lesson)) %>
+
+  <br>
+
+  <div>
+    <%= link_to('Показать урок', admin_lesson_path(@lesson)) %>
+  </div>
+</div>

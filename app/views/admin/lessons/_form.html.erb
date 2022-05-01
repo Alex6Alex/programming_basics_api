@@ -1,0 +1,39 @@
+<div class="container-sm">
+  <%= form_with(model: lesson, url: url) do |form| %>
+    <% if lesson.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(lesson.errors.count, 'error') %> prohibited this section from being saved:</h2>
+
+        <ul>
+          <% lesson.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <div class="mb-3">
+        <%= form.label(:name, 'Название урока', class: 'form-label') %>
+        <%= form.text_field(:name, class: 'form-control') %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label(:description, 'Описание урока', class: 'form-label') %>
+        <%= form.text_field(:description, class: 'form-control') %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label(:order, 'Раздел', class: 'form-label') %>
+        <%= form.text_field(:order, class: 'form-control') %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label(:order, 'Порядковый номер', class: 'form-label') %>
+        <%= form.text_field(:order, class: 'form-control') %>
+      </div>
+
+      <%= form.submit('Отправить', class: 'btn btn-primary') %>
+    </div>
+  <% end %>
+</div>

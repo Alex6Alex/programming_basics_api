@@ -7,8 +7,8 @@
     <h1 style="display: inline-block"><%= @section.name %></h1>
     <%= link_to('Редактировать', edit_admin_section_path(@section)) %>
     <%= link_to('Удалить', admin_section_path(@section), method: :delete, class: 'link-danger') %>
-
   </div>
+
   <p><b>Описание раздела:</b> <%= @section.description %></p>
 
   <p><b>Количество уроков в разделе:</b> <%= @section.lessons.count %></p>

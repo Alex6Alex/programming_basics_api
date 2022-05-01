@@ -17,10 +17,18 @@
 <!--</script>-->
 <%#= text_area_tag(:content, lesson_unit.content_block, class: :tinymce) %>
 
+<div class="container-fluid">
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
 
-<div>
-  <h1><%= @lesson.name %></h1>
-  <p><%= @lesson.description %></p>
-  <p>Страницы урока:</p>
-  <%= @lesson.lesson_units.count %>
+  <div style="display: block">
+    <h1 style="display: inline-block"><%= @lesson.name %></h1>
+    <%= link_to('Редактировать', edit_admin_lesson_path(@lesson)) %>
+    <%= link_to('Удалить', admin_lesson_path(@lesson), method: :delete, class: 'link-danger') %>
+  </div>
+
+  <p><b>Описание урока:</b> <%= @lesson.description %></p>
+
+  <p><b>Количество секций в уроке:</b> <%= @lesson.lesson_units.count %></p>
 </div>

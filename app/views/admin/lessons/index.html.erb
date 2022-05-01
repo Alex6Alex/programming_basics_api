@@ -1,20 +1,30 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Section ID</th>
-      <th>Order</th>
-    </tr>
-  </thead>
-  <% @lessons.each do |lesson| %>
-    <tr>
-      <th><%= lesson.id %></th>
-      <td><%= link_to(lesson.name, admin_lesson_path(lesson)) %></td>
-      <td><%= lesson.description %></td>
-      <td><%= lesson.section_id %></td>
-      <td><%= lesson.order %></td>
-    </tr>
+<div class="container-fluid">
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
   <% end %>
-</table>
+
+  <h1>Уроки</h1>
+
+  <%= button_to('Добавить новый урок', new_admin_lesson_path, method: :get, class: 'btn btn-success') %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>ID раздела</th>
+        <th>Позиция</th>
+      </tr>
+    </thead>
+    <% @lessons.each do |lesson| %>
+      <tr>
+        <th><%= lesson.id %></th>
+        <td><%= link_to(lesson.name, admin_lesson_path(lesson)) %></td>
+        <td><%= lesson.description %></td>
+        <td><%= lesson.section_id %></td>
+        <td><%= lesson.order %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
