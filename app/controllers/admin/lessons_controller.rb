@@ -39,7 +39,7 @@ class Admin::LessonsController < ApplicationController
     @lesson.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_lesson_path, notice: 'Lesson was successfully destroyed.') }
+      format.html { redirect_to(admin_lessons_path, notice: 'Lesson was successfully destroyed.') }
     end
   end
 
