@@ -1,4 +1,4 @@
-class Admin::SectionsController < ApplicationController
+class Admin::SectionsController < Admin::BaseController
   before_action :set_section, only: %i[show edit update destroy]
 
   def index

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Programming Basics</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <% unless current_user.nil? %>
+      <header class="p-3 mb-3 border-bottom">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><%= link_to('Разделы', admin_sections_path, class: 'nav-link px-2 link-secondary') %></li>
+              <li><%= link_to('Уроки', admin_lessons_path, class: 'nav-link px-2 link-dark') %></li>
+            </ul>
+
+            <div class="dropdown text-end">
+              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" style="outline: none" data-bs-toggle="dropdown">
+                <%= current_user.email %>
+              </a>
+              <ul class="dropdown-menu text-small">
+                <li><%= button_to('Выход', destroy_user_session_path, class: "dropdown-item", method: :delete) %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

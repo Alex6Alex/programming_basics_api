@@ -1,0 +1,23 @@
+<main class="form-signin w-50 m-auto">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render('devise/shared/error_messages', resource: resource) %>
+    <h1 class="h3 mb-3 fw-normal">Пожалуйста, введите данные, необходимые для регистрации</h1>
+
+    <div class="form-floating">
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+      <%= f.label :email %>
+    </div>
+    <div class="form-floating">
+      <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
+      <%= f.label :password %>
+    </div>
+    <div class="form-floating">
+      <%= f.password_field :password_confirmation, autocomplete: 'туц-password', class: 'form-control' %>
+      <%= f.label :password_confirmation %>
+    </div>
+
+    <%= f.submit('Зарегистрироваться', class: 'w-100 btn btn-lg btn-primary') %>
+  <% end %>
+
+  <%= render 'devise/shared/links' %>
+</main>
