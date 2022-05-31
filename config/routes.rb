@@ -3,13 +3,11 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      # devise_for :users, class_name: 'User'
-
-      # devise_scope :user do
-      #   scope :users do
-      #     post :sign_in, to: 'sessions#create'
-      #   end
-      # end
+      devise_scope :user do
+        scope :users do
+          post :sign_in, to: 'sessions#create'
+        end
+      end
 
       resources :sections, only: :index
       resources :lessons, only: :show

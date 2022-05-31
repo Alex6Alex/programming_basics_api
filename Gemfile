@@ -46,6 +46,8 @@ gem "bootstrap"
 
 gem "devise"
 
+gem "jwt"
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
