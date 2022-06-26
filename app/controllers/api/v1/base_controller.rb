@@ -4,6 +4,8 @@ class Api::V1::BaseController < ApplicationController
   private
 
   def parse_token
+    puts request.headers
+
     return if request.headers['Authorization'].blank?
 
     authenticate_or_request_with_http_token do |token|
@@ -11,6 +13,7 @@ class Api::V1::BaseController < ApplicationController
 
       @current_user_id = jwt_payload['id']
     rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
+      puts @current_user_id
       head(:unauthorized)
     end
   end
