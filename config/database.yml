@@ -15,4 +15,5 @@ production:
   <<: *default
   database: programming_basics_production
   username: programming_basics
+  url: <%= ENV["DATABASE_URL"] %>
   password: <%= ENV["PROGRAMMING_BASICS_DATABASE_PASSWORD"] %>
