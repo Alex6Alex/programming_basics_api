@@ -4,7 +4,7 @@ class Api::V1::BaseController < ApplicationController
   private
 
   def parse_token
-    puts request.headers
+    puts request.headers.each { |h| puts h }
 
     return if request.headers['Authorization'].blank?
 
