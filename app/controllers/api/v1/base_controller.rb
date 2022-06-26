@@ -4,15 +4,12 @@ class Api::V1::BaseController < ApplicationController
   private
 
   def parse_token
-    puts request.headers['Authorization']
-
     return if request.headers['Authorization'].blank?
 
     authenticate_or_request_with_http_token do |token|
       jwt_payload = JWT.decode(token, Rails.application.secrets.secret_key_base || ENV['SECRET_KEY_BASE']).first
 
-      @current_user_id = jwt_payload['id']
-      puts @current_user_id
+      @current_user_id = jwt_payload['id'] || 1
     rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
       head(:unauthorized)
     end
@@ -23,7 +20,7 @@ class Api::V1::BaseController < ApplicationController
   end
 
   def current_user
-    @current_user ||= super || User.find(@current_user_id) || User.find(1)
+    @current_user ||= super || User.find(@current_user_id)
   end
 
   def signed_in?
