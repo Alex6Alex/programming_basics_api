@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_30_132847) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_31_175909) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_30_132847) do
     t.index ["order"], name: "index_sections_on_order", unique: true
   end
 
+  create_table "user_progress_states", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "learn_unit_type", null: false
+    t.bigint "learn_unit_id", null: false
+    t.integer "state", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["learn_unit_type", "learn_unit_id"], name: "index_user_progress_states_on_learn_unit"
+    t.index ["user_id"], name: "index_user_progress_states_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -56,4 +67,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_30_132847) do
 
   add_foreign_key "lesson_units", "lessons"
   add_foreign_key "lessons", "sections"
+  add_foreign_key "user_progress_states", "users"
 end

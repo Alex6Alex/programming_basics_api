@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
       resources :sections, only: :index
       resources :lessons, only: :show
+
+      resources :lesson_units, only: [] do
+        post :pass, on: :member
+      end
     end
   end
 
